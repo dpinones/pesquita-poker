@@ -1,5 +1,6 @@
+import { Suspense } from 'react'
 import { createClient } from '@/lib/supabase/server'
-import { LeaderboardTable } from '@/components/leaderboard/leaderboard-table'
+import { RankingTabs } from '@/components/leaderboard/ranking-tabs'
 import { PointsInfo } from '@/components/leaderboard/points-info'
 import type { LeaderboardEntry } from '@/lib/types'
 
@@ -23,7 +24,10 @@ export default async function HomePage() {
       <div className="flex justify-center px-4 pb-3">
         <PointsInfo />
       </div>
-      <LeaderboardTable entries={entries} />
+
+      <Suspense>
+        <RankingTabs historicEntries={entries} />
+      </Suspense>
     </div>
   )
 }

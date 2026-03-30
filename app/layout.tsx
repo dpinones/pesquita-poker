@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import { Inter, Playfair_Display } from 'next/font/google'
 import { Navbar } from '@/components/layout/navbar'
 import './globals.css'
@@ -36,7 +37,9 @@ export default function RootLayout({
         <main className="mx-auto min-h-screen max-w-lg pb-20">
           {children}
         </main>
-        <Navbar />
+        <Suspense>
+          <Navbar />
+        </Suspense>
       </body>
     </html>
   )
